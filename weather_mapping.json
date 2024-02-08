@@ -1,0 +1,11 @@
+{
+  "Showers": 0,
+  "Cloudy": 1,
+  "Mostly Cloudy": 2,
+  "Sunny": 3,
+  "Partly Cloudy": 4,
+  "Mostly Sunny": 5,
+  "Mostly Clear": 6,
+  "Clear": 7,
+  "Rain": 8
+}
