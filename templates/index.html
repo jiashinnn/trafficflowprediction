@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Flow Prediction System</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            margin-top: 30px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Traffic Flow Prediction System</h1>
+    <div class="container">
+        <form action="/predict" method="post">
+            <label for="day">Day:</label>
+            <select name="day" required>
+                {% for value in days %}
+                <option value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+            </select><br>
+
+            <label for="starting_location">Starting Location:</label>
+            <select name="starting_location" required>
+                {% for value in places %}
+                <option value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+            </select><br>
+
+            <label for="destination_location">Destination Location:</label>
+            <select name="destination_location" required>
+                {% for value in places %}
+                <option value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+            </select><br>
+
+            <!-- Additional input for Fastest Route Distance -->
+            <label for="fastest_route_distance">Fastest Route Distance:</label>
+            <input type="text" name="fastest_route_distance" required><br>
+
+            <label for="fastest_route_name">Fastest Route Name:</label>
+            <select name="fastest_route_name" required>
+                {% for value in routes %}
+                <option value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+            </select><br>
+
+            <label for="fastest_route_time">Fastest Route Time:</label>
+            <input type="text" name="fastest_route_time" required><br>
+
+            <!-- Select dropdown for Holiday -->
+            <label for="holiday">Holiday:</label>
+            <select name="holiday" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+
+            <!-- Select dropdown for special condition -->
+            <label for="special_condition">Special Condition:</label>
+            <select name="special_condition" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select><br>
+
+            <label for="weather">Weather:</label>
+            <select name="weather" required>
+                {% for value in weathers %}
+                <option value="{{ value }}">{{ value }}</option>
+                {% endfor %}
+            </select><br>
+
+            <!-- Add other input fields for non-dropdown features -->
+
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if result is defined %}
+        <h2>Prediction Result:</h2>
+        <h3>
+            <p><b>{{ result }}</b></p>
+        </h3>
+        {% endif %}
+    </div>
+</body>
+
+</html>

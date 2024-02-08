@@ -1,0 +1,7 @@
+{
+  "smooth": 0,
+  "highly congested": 1,
+  "slightly congested": 2,
+  "congested": 3,
+  "blockage": 4
+}
